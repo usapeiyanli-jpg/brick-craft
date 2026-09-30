@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BrickCraft — Build anything</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="mobile.css" />
+</head>
+<body>
+<main class="app-shell">
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark"><i></i><i></i><i></i><i></i></span><span>Brick<span>Craft</span></span></a>
+    <div class="topbar-actions"><span class="save-state"><span class="status-dot"></span> Saved to this device</span><button class="icon-button" id="help-btn">?</button><button class="avatar">Y</button></div>
+  </header>
+  <section class="workspace">
+    <aside class="sidebar">
+      <div class="panel-heading"><div><p class="eyebrow">YOUR CREATION</p><h1>Build a world.</h1></div><span class="brick-count" id="brick-count">0</span></div>
+      <p class="intro">Pick a brick, choose a color, then click the baseplate to start building.</p>
+      <div class="section-label"><span>Brick types</span><span class="section-hint">Click to select</span></div>
+      <div class="brick-picker" id="brick-picker">
+        <button class="brick-option active" data-type="brick-2x4"><span class="brick-preview brick-preview-wide"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span><strong>2 × 4 Brick</strong><small>Classic brick</small></span><span class="check">✓</span></button>
+        <button class="brick-option" data-type="brick-2x2"><span class="brick-preview"><i></i><i></i><i></i><i></i></span><span><strong>2 × 2 Brick</strong><small>Compact brick</small></span><span class="check">✓</span></button>
+        <button class="brick-option" data-type="plate-2x4"><span class="brick-preview brick-preview-wide plate"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span><strong>2 × 4 Plate</strong><small>Thin and flat</small></span><span class="check">✓</span></button>
+        <button class="brick-option" data-type="brick-1x2"><span class="brick-preview narrow"><i></i><i></i></span><span><strong>1 × 2 Brick</strong><small>Small detail</small></span><span class="check">✓</span></button>
+        <button class="brick-option" data-type="brick-1x1"><span class="brick-preview single"><i></i></span><span><strong>1 × 1 Brick</strong><small>Tiny detail</small></span><span class="check">✓</span></button>
+        <button class="brick-option" data-type="slope-2x2"><span class="brick-preview slope"><i></i><i></i><i></i><i></i></span><span><strong>2 × 2 Slope</strong><small>Angled roof</small></span><span class="check">✓</span></button>
+        <button class="brick-option" data-type="tnt"><span class="brick-preview tnt"><b>TNT</b></span><span><strong>TNT Brick</strong><small>Place, then click it</small></span><span class="check">✓</span></button>
+      </div>
+      <div class="section-label color-label"><span>Color</span><span class="selected-color" id="selected-color">Sunset red</span></div>
+      <div class="color-wheel-wrap"><canvas id="color-wheel" width="190" height="190" aria-label="Choose a brick color"></canvas><span class="color-wheel-cursor" id="color-wheel-cursor"></span></div>
+      <div class="color-wheel-help"><span class="color-preview" id="color-preview"></span><span>Click or drag anywhere on the wheel</span></div>
+      <div class="sidebar-footer"><button class="reset-button" id="reset-btn"><span>↺</span> Start over</button><span class="keyboard-hint"><kbd>R</kbd> reset</span></div>
+    </aside>
+    <section class="scene-panel">
+      <div id="scene" class="scene" aria-label="3D BrickCraft building area"></div>
+      <div class="scene-topline"><span class="mode-pill"><span class="mode-dot"></span> Build mode</span><span class="scene-tip">Drag to look around · Scroll to zoom</span></div>
+      <div class="scene-bottomline"><div class="camera-controls"><span>VIEW</span><button id="home-view" class="camera-btn active">Home</button><button id="top-view" class="camera-btn">Top</button></div><div class="scene-actions"><button class="undo-btn" id="undo-btn" disabled>↶ Undo</button><span class="shortcut-hint"><kbd>⌘</kbd><kbd>Z</kbd></span></div></div>
+      <div class="empty-hint" id="empty-hint"><span class="sparkle">✦</span><strong>Your build starts here</strong><span>Click anywhere on the baseplate</span></div>
+    </section>
+  </section>
+</main>
+<dialog id="help-dialog"><button class="dialog-close" id="close-help">×</button><p class="eyebrow">QUICK GUIDE</p><h2>Build your first creation</h2><p>Choose any brick and color from the left panel. Click an open stud to place it. Drag to orbit around your build and scroll to zoom in or out.</p><div class="guide-keys"><span><kbd>R</kbd> Reset build</span><span><kbd>⌘</kbd><kbd>Z</kbd> Undo</span></div></dialog>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
